@@ -6,106 +6,148 @@
     <title>صفحه جزئیات محصول</title>
     <link rel="stylesheet" href="../dist/all.css" />
     <link rel="stylesheet" href="../dist/output.css" />
+    <style>
+      .thumbnail {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        transition: transform 0.3s ease-in-out;
+      }
+      .thumbnail:hover {
+        transform: scale(1.1);
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+      }
+      .modal-content {
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: contain;
+      }
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        color: red;
+        font-size: 30px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .modal-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(50%);
+        background-color: black;
+        color: white;
+        font-size: 20px;
+        padding: 8px;
+        cursor: pointer;
+        border-radius: 10px;
+      }
+      .left-btn {
+        left: 10px;
+      }
+      .right-btn {
+        right: 10px;
+      }
+
+      @media (max-width: 768px) {
+        .thumbnail {
+          width: 60px;
+          height: 60px;
+        }
+        .modal-content {
+          width: 95%;
+        }
+        .modal-button {
+          font-size: 16px;
+          padding: 6px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div class="w-full min-h-screen p-0 overflow-auto">
-      <div class="mx-auto w-full px-2 sm:px-4 md:px-6 lg:px-12 py-4 h-auto">
-        <div
-          class="w-full bg-white shadow-lg rounded-lg p-4 flex flex-col lg:flex-row gap-4"
-        >
-          <div class="w-full flex flex-col lg:w-2/3 text-right">
-            <h3 class="text-2xl xl:text-3xl font-bold text-gray-800 text-left">
-              Property number 1
-            </h3>
-            <div class="mt-4 space-y-2">
-              <p class="text-gray-700 text-lg text-left">
-                <span class="font-semibold">Price:</span> 10000 dollar
+    <div class="w-full mx-auto p-4">
+      <div
+        class="bg-white shadow-lg rounded-lg p-4 flex flex-col lg:flex-row gap-4"
+      >
+        <div class="lg:w-2/3 flex flex-col">
+          <h3
+            class="text-2xl xl:text-3xl font-bold text-gray-800 text-center lg:text-left"
+          >
+          Property number 1          </h3>
+          <div class="mt-4">
+            <p class="text-gray-700 text-lg">
+              <span class="font-semibold">price:</span> 10000 dollar
+            </p>
+            <p class="text-gray-700 text-lg">
+              <span class="font-semibold">position:</span> west 
+            </p>
+          </div>
+          <div class="mt-4">
+            <p class="text-lg font-semibold text-gray-700">descriptions:</p>
+            <div class="max-h-40 overflow-y-auto p-4 bg-gray-100 rounded-lg">
+              <p class="text-gray-600 text-sm md:text-lg">
+                This property has three rooms with parking and...
               </p>
-              <p class="text-gray-700 text-lg text-left">
-                <span class="font-semibold">Position:</span> West
-              </p>
-            </div>
-            <div class="mt-4">
-              <p class="text-lg text-left font-semibold text-gray-700">
-                Descriptions:
-              </p>
-              <div class="max-h-40 overflow-y-auto p-4 bg-gray-100 rounded-lg">
-                <p class="text-gray-600 h-auto text-justify text-sm md:text-lg">
-                  Amet consectetur adipisicing elit. Odit, soluta. consectetur
-                  adipisicing elit. Odit, soluta...
-                </p>
-              </div>
             </div>
           </div>
+        </div>
 
-          <div class="relative w-full lg:w-1/3 flex flex-col gap-2">
-            <div class="overflow-hidden rounded-lg shadow-lg mb-4">
-              <img
-                id="mainImage"
-                src="../images/1.jpg"
-                class="w-full h-64 object-cover transition-all duration-300"
-              />
-            </div>
-
-            <button
-              id="prev"
-              class="absolute top-1/2 left-2 -translate-y-1/2 text-white p-2 rounded-full shadow-md hover:bg-gray-700 transition"
-            >
-              <i class="fa-solid fa-circle-chevron-left text-blue-400"></i>
-            </button>
-            <button
-              id="next"
-              class="absolute top-1/2 right-2 -translate-y-1/2 text-white p-2 rounded-full shadow-md hover:bg-gray-700 transition"
-            >
-              <i class="fa-solid fa-circle-chevron-right text-blue-400"></i>
-            </button>
-
-            <div class="flex justify-start gap-2 mt-4 overflow-x-hidden">
-              <img
-                src="../images/1.jpg"
-                class="thumbnail w-14 h-14 object-cover rounded-md cursor-pointer border-2 border-gray-300 hover:border-red-500 transition"
-              />
-              <img
-                src="../images/2.jpeg"
-                class="thumbnail w-14 h-14 object-cover rounded-md cursor-pointer border-2 border-gray-300 hover:border-red-500 transition"
-              />
-              <img
-                src="../images/9.webp"
-                class="thumbnail w-14 h-14 object-cover rounded-md cursor-pointer border-2 border-gray-300 hover:border-red-500 transition"
-              />
-              <img
-                src="../images/khalifeh.webp"
-                class="thumbnail w-14 h-14 object-cover rounded-md cursor-pointer border-2 border-gray-300 hover:border-red-500 transition"
-              />
-              <img
-                src="../images/miusiam.jpg"
-                class="thumbnail w-14 h-14 object-cover rounded-md cursor-pointer border-2 border-gray-300 hover:border-red-500 transition"
-              />
-              <img
-                src="../images/khalifeh2.webp"
-                class="thumbnail w-14 h-14 object-cover rounded-md cursor-pointer border-2 border-gray-300 hover:border-red-500 transition"
-              />
-            </div>
+        <div class="w-full max-w-lg flex flex-col items-center">
+          <div class="rounded-lg shadow-lg mb-4 cursor-pointer">
+            <img
+              id="mainImage"
+              src="../images/1.jpg"
+              class="w-full h-64 object-cover transition-all duration-300"
+              onclick="openModal(0)"
+            />
+          </div>
+          <div
+            class="flex justify-start gap-2 overflow-x-auto overflow-y-hidden"
+          >
+            <img
+              src="../images/1.jpg"
+              class="thumbnail rounded-md cursor-pointer"
+              onclick="openModal(0)"
+            />
+            <img
+              src="../images/2.jpeg"
+              class="thumbnail rounded-md cursor-pointer"
+              onclick="openModal(1)"
+            />
+            <img
+              src="../images/miusiam.jpg"
+              class="thumbnail rounded-md cursor-pointer"
+              onclick="openModal(2)"
+            />
           </div>
         </div>
       </div>
 
-      <div
-        class="mx-auto w-full px-2 sm:px-4 md:px-6 lg:px-12 py-4 min-h-screen"
-      >
+      <div class="mx-auto w-full py-4 min-h-screen">
         <div
           class="w-full bg-white shadow-lg rounded-lg p-4 flex flex-col lg:flex-row gap-4"
         >
           <div class="relative w-full px-8">
-            <h2 class="text-lg font-semibold mb-4">Similar offers</h2>
+            <h2 class="text-lg font-semibold mb-4"> Similar offers</h2>
             <div class="flex items-center">
               <button
-                id="nextBtn"
-                class="p-2 mr-6 bg-gray-200 rounded-full shadow-md"
+                id="prevBtn"
+                class="p-2 bg-gray-200 rounded-full shadow-md"
               >
-                ◀
-              </button>
-
+              <i class="fa-solid fa-chevron-left"></i>              </button>
               <div
                 id="similarContainer"
                 class="flex gap-3 overflow-x-hidden overflow-y-hidden scroll-smooth px-4 touch-pan-x cursor-grab w-full whitespace-nowrap"
@@ -113,388 +155,296 @@
                 <div
                   class="min-w-[220px] md:min-w-[260px] h-64 bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-sky-200 hover:shadow-2xl"
                 >
-                  <img
-                    src="../images/2.jpeg"
-                    class="w-full h-32 object-cover"
-                  />
+                  <img src="../images/1.jpg" class="w-full h-32 object-cover" />
                   <div class="p-3">
-                    <h3 class="font-semibold my-1">Property number 1</h3>
+                    <h3 class="font-semibold my-1">  Property number 1</h3>
                     <p class="text-xs text-gray-600 font-semibold">
-                      price: <span class="text-gray-600">12000 Dollars</span>
+                      price: <span class="text-gray-600">10000 dollar</span>
                     </p>
                     <p class="text-xs text-gray-600 font-semibold">
-                      position <span class="text-gray-600">west </span>
+                      position: <span class="text-gray-600"> west</span>
                     </p>
                     <p class="text-xs text-gray-600 font-semibold">
                       descriptions:
-                      <span class="text-gray-600">
-                        Lorem ipsum dolor, sit amess ...</span
+                      <span class="text-gray-600"
+                        >
+                        This property has three rooms with parking and...
+                        </span
                       >
                     </p>
                   </div>
                 </div>
 
-                <div
-                  class="min-w-[220px] md:min-w-[260px] h-64 bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-sky-200 hover:shadow-2xl"
-                >
-                  <img src="../images/3.jpg" class="w-full h-32 object-cover" />
-                  <div class="p-3">
-                    <h3 class="font-semibold my-1">Property number 1</h3>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      price: <span class="text-gray-600">12000 Dollars</span>
-                    </p>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      position <span class="text-gray-600">west </span>
-                    </p>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      descriptions:
-                      <span class="text-gray-600">
-                        Lorem ipsum dolor, sit amess ...</span
-                      >
-                    </p>
-                  </div>
-                </div>
-
-                <div
-                  class="min-w-[220px] md:min-w-[260px] h-64 bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-sky-200 hover:shadow-2xl"
-                >
-                  <img
-                    src="../images/4.jpeg"
-                    class="w-full h-32 object-cover"
-                  />
-                  <div class="p-3">
-                    <h3 class="font-semibold my-1">Property number 1</h3>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      price: <span class="text-gray-600">12000 Dollars</span>
-                    </p>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      position <span class="text-gray-600">west </span>
-                    </p>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      descriptions:
-                      <span class="text-gray-600">
-                        Lorem ipsum dolor, sit amess ...</span
-                      >
-                    </p>
-                  </div>
-                </div>
                 <div
                   class="min-w-[220px] md:min-w-[260px] h-64 bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-sky-200 hover:shadow-2xl"
                 >
                   <img src="../images/1.jpg" class="w-full h-32 object-cover" />
                   <div class="p-3">
-                    <h3 class="font-semibold my-1">Property number 1</h3>
+                    <h3 class="font-semibold my-1">  Property number 1</h3>
                     <p class="text-xs text-gray-600 font-semibold">
-                      price: <span class="text-gray-600">12000 Dollars</span>
+                      price: <span class="text-gray-600">10000 dollar</span>
                     </p>
                     <p class="text-xs text-gray-600 font-semibold">
-                      position <span class="text-gray-600">west </span>
+                      position: <span class="text-gray-600"> west</span>
                     </p>
                     <p class="text-xs text-gray-600 font-semibold">
                       descriptions:
-                      <span class="text-gray-600">
-                        Lorem ipsum dolor, sit amess ...</span
+                      <span class="text-gray-600"
+                        >
+                        This property has three rooms with parking and...
+                        </span
                       >
                     </p>
                   </div>
+                </div><div
+                class="min-w-[220px] md:min-w-[260px] h-64 bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-sky-200 hover:shadow-2xl"
+              >
+                <img src="../images/1.jpg" class="w-full h-32 object-cover" />
+                <div class="p-3">
+                  <h3 class="font-semibold my-1">  Property number 1</h3>
+                  <p class="text-xs text-gray-600 font-semibold">
+                    price: <span class="text-gray-600">10000 dollar</span>
+                  </p>
+                  <p class="text-xs text-gray-600 font-semibold">
+                    position: <span class="text-gray-600"> west</span>
+                  </p>
+                  <p class="text-xs text-gray-600 font-semibold">
+                    descriptions:
+                    <span class="text-gray-600"
+                      >
+                      This property has three rooms with parking and...
+                      </span
+                    >
+                  </p>
                 </div>
+              </div><div
+              class="min-w-[220px] md:min-w-[260px] h-64 bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-sky-200 hover:shadow-2xl"
+            >
+              <img src="../images/1.jpg" class="w-full h-32 object-cover" />
+              <div class="p-3">
+                <h3 class="font-semibold my-1">  Property number 1</h3>
+                <p class="text-xs text-gray-600 font-semibold">
+                  price: <span class="text-gray-600">10000 dollar</span>
+                </p>
+                <p class="text-xs text-gray-600 font-semibold">
+                  position: <span class="text-gray-600"> west</span>
+                </p>
+                <p class="text-xs text-gray-600 font-semibold">
+                  descriptions:
+                  <span class="text-gray-600"
+                    >
+                    This property has three rooms with parking and...
+                    </span
+                  >
+                </p>
+              </div>
+            </div><div
+            class="min-w-[220px] md:min-w-[260px] h-64 bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-sky-200 hover:shadow-2xl"
+          >
+            <img src="../images/1.jpg" class="w-full h-32 object-cover" />
+            <div class="p-3">
+              <h3 class="font-semibold my-1">  Property number 1</h3>
+              <p class="text-xs text-gray-600 font-semibold">
+                price: <span class="text-gray-600">10000 dollar</span>
+              </p>
+              <p class="text-xs text-gray-600 font-semibold">
+                position: <span class="text-gray-600"> west</span>
+              </p>
+              <p class="text-xs text-gray-600 font-semibold">
+                descriptions:
+                <span class="text-gray-600"
+                  >
+                  This property has three rooms with parking and...
+                  </span
+                >
+              </p>
+            </div>
+          </div><div
+          class="min-w-[220px] md:min-w-[260px] h-64 bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-sky-200 hover:shadow-2xl"
+        >
+          <img src="../images/1.jpg" class="w-full h-32 object-cover" />
+          <div class="p-3">
+            <h3 class="font-semibold my-1">  Property number 1</h3>
+            <p class="text-xs text-gray-600 font-semibold">
+              price: <span class="text-gray-600">10000 dollar</span>
+            </p>
+            <p class="text-xs text-gray-600 font-semibold">
+              position: <span class="text-gray-600"> west</span>
+            </p>
+            <p class="text-xs text-gray-600 font-semibold">
+              descriptions:
+              <span class="text-gray-600"
+                >
+                This property has three rooms with parking and...
+                </span
+              >
+            </p>
+          </div>
+        </div><div
+        class="min-w-[220px] md:min-w-[260px] h-64 bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-sky-200 hover:shadow-2xl"
+      >
+        <img src="../images/1.jpg" class="w-full h-32 object-cover" />
+        <div class="p-3">
+          <h3 class="font-semibold my-1">  Property number 1</h3>
+          <p class="text-xs text-gray-600 font-semibold">
+            price: <span class="text-gray-600">10000 dollar</span>
+          </p>
+          <p class="text-xs text-gray-600 font-semibold">
+            position: <span class="text-gray-600"> west</span>
+          </p>
+          <p class="text-xs text-gray-600 font-semibold">
+            descriptions:
+            <span class="text-gray-600"
+              >
+              This property has three rooms with parking and...
+              </span
+            >
+          </p>
+        </div>
+      </div><div
+      class="min-w-[220px] md:min-w-[260px] h-64 bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-sky-200 hover:shadow-2xl"
+    >
+      <img src="../images/1.jpg" class="w-full h-32 object-cover" />
+      <div class="p-3">
+        <h3 class="font-semibold my-1">  Property number 1</h3>
+        <p class="text-xs text-gray-600 font-semibold">
+          price: <span class="text-gray-600">10000 dollar</span>
+        </p>
+        <p class="text-xs text-gray-600 font-semibold">
+          position: <span class="text-gray-600"> west</span>
+        </p>
+        <p class="text-xs text-gray-600 font-semibold">
+          descriptions:
+          <span class="text-gray-600"
+            >
+            This property has three rooms with parking and...
+            </span
+          >
+        </p>
+      </div>
+    </div><div
+    class="min-w-[220px] md:min-w-[260px] h-64 bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-sky-200 hover:shadow-2xl"
+  >
+    <img src="../images/1.jpg" class="w-full h-32 object-cover" />
+    <div class="p-3">
+      <h3 class="font-semibold my-1">  Property number 1</h3>
+      <p class="text-xs text-gray-600 font-semibold">
+        price: <span class="text-gray-600">10000 dollar</span>
+      </p>
+      <p class="text-xs text-gray-600 font-semibold">
+        position: <span class="text-gray-600"> west</span>
+      </p>
+      <p class="text-xs text-gray-600 font-semibold">
+        descriptions:
+        <span class="text-gray-600"
+          >
+          This property has three rooms with parking and...
+          </span
+        >
+      </p>
+    </div>
+  </div><div
+  class="min-w-[220px] md:min-w-[260px] h-64 bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-sky-200 hover:shadow-2xl"
+>
+  <img src="../images/1.jpg" class="w-full h-32 object-cover" />
+  <div class="p-3">
+    <h3 class="font-semibold my-1">  Property number 1</h3>
+    <p class="text-xs text-gray-600 font-semibold">
+      price: <span class="text-gray-600">10000 dollar</span>
+    </p>
+    <p class="text-xs text-gray-600 font-semibold">
+      position: <span class="text-gray-600"> west</span>
+    </p>
+    <p class="text-xs text-gray-600 font-semibold">
+      descriptions:
+      <span class="text-gray-600"
+        >
+        This property has three rooms with parking and...
+        </span
+      >
+    </p>
+  </div>
+</div>
 
-                <div
-                  class="min-w-[220px] md:min-w-[260px] h-64 bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-sky-200 hover:shadow-2xl"
-                >
-                  <img
-                    src="../images/2.jpeg"
-                    class="w-full h-32 object-cover"
-                  />
-                  <div class="p-3">
-                    <h3 class="font-semibold my-1">Property number 1</h3>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      price: <span class="text-gray-600">12000 Dollars</span>
-                    </p>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      position <span class="text-gray-600">west </span>
-                    </p>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      descriptions:
-                      <span class="text-gray-600">
-                        Lorem ipsum dolor, sit amess ...</span
-                      >
-                    </p>
-                  </div>
-                </div>
 
-                <div
-                  class="min-w-[220px] md:min-w-[260px] h-64 bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-sky-200 hover:shadow-2xl"
-                >
-                  <img src="../images/3.jpg" class="w-full h-32 object-cover" />
-                  <div class="p-3">
-                    <h3 class="font-semibold my-1">Property number 1</h3>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      price: <span class="text-gray-600">12000 Dollars</span>
-                    </p>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      position <span class="text-gray-600">west </span>
-                    </p>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      descriptions:
-                      <span class="text-gray-600">
-                        Lorem ipsum dolor, sit amess ...</span
-                      >
-                    </p>
-                  </div>
-                </div>
 
-                <div
-                  class="min-w-[220px] md:min-w-[260px] h-64 bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-sky-200 hover:shadow-2xl"
-                >
-                  <img
-                    src="../images/4.jpeg"
-                    class="w-full h-32 object-cover"
-                  />
-                  <div class="p-3">
-                    <h3 class="font-semibold my-1">Property number 1</h3>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      price: <span class="text-gray-600">12000 Dollars</span>
-                    </p>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      position <span class="text-gray-600">west </span>
-                    </p>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      descriptions:
-                      <span class="text-gray-600">
-                        Lorem ipsum dolor, sit amess ...</span
-                      >
-                    </p>
-                  </div>
-                </div>
-                <div
-                  class="min-w-[220px] md:min-w-[260px] h-64 bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-sky-200 hover:shadow-2xl"
-                >
-                  <img
-                    src="../images/4.jpeg"
-                    class="w-full h-32 object-cover"
-                  />
-                  <div class="p-3">
-                    <h3 class="font-semibold my-1">Property number 1</h3>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      price: <span class="text-gray-600">12000 Dollars</span>
-                    </p>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      position <span class="text-gray-600">west </span>
-                    </p>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      descriptions:
-                      <span class="text-gray-600">
-                        Lorem ipsum dolor, sit amess ...</span
-                      >
-                    </p>
-                  </div>
-                </div>
-                <div
-                  class="min-w-[220px] md:min-w-[260px] h-64 bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-sky-200 hover:shadow-2xl"
-                >
-                  <img
-                    src="../images/4.jpeg"
-                    class="w-full h-32 object-cover"
-                  />
-                  <div class="p-3">
-                    <h3 class="font-semibold my-1">Property number 1</h3>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      price: <span class="text-gray-600">12000 Dollars</span>
-                    </p>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      position <span class="text-gray-600">west </span>
-                    </p>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      descriptions:
-                      <span class="text-gray-600">
-                        Lorem ipsum dolor, sit amess ...</span
-                      >
-                    </p>
-                  </div>
-                </div>
-                <div
-                  class="min-w-[220px] md:min-w-[260px] h-64 bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-sky-200 hover:shadow-2xl"
-                >
-                  <img
-                    src="../images/4.jpeg"
-                    class="w-full h-32 object-cover"
-                  />
-                  <div class="p-3">
-                    <h3 class="font-semibold my-1">Property number 1</h3>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      price: <span class="text-gray-600">12000 Dollars</span>
-                    </p>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      position <span class="text-gray-600">west </span>
-                    </p>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      descriptions:
-                      <span class="text-gray-600">
-                        Lorem ipsum dolor, sit amess ...</span
-                      >
-                    </p>
-                  </div>
-                </div>
-                <div
-                  class="min-w-[220px] md:min-w-[260px] h-64 bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-sky-200 hover:shadow-2xl"
-                >
-                  <img
-                    src="../images/4.jpeg"
-                    class="w-full h-32 object-cover"
-                  />
-                  <div class="p-3">
-                    <h3 class="font-semibold my-1">Property number 1</h3>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      price: <span class="text-gray-600">12000 Dollars</span>
-                    </p>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      position <span class="text-gray-600">west </span>
-                    </p>
-                    <p class="text-xs text-gray-600 font-semibold">
-                      descriptions:
-                      <span class="text-gray-600">
-                        Lorem ipsum dolor, sit amess ...</span
-                      >
-                    </p>
-                  </div>
-                </div>
               </div>
               <button
-                id="prevBtn"
-                class="p-2 bg-gray-200 rounded-full shadow-md"
+                id="nextBtn"
+                class="p-2 ml-6 bg-gray-200 rounded-full shadow-md"
               >
-                ▶
+              <i class="fa-solid fa-chevron-right"></i> 
               </button>
             </div>
           </div>
         </div>
       </div>
-
-      <script>
-        const images = [
-          "../images/1.jpg",
-          "../images/2.jpeg",
-          "../images/9.webp",
-          "../images/khalifeh.webp",
-          "../images/miusiam.jpg",
-          "../images/khalifeh2.webp",
-        ];
-        let currentIndex = 0;
-
-        const mainImage = document.getElementById("mainImage");
-        const thumbnails = document.querySelectorAll(".thumbnail");
-
-        document.getElementById("next").addEventListener("click", () => {
-          currentIndex = (currentIndex + 1) % images.length;
-          updateImage();
-        });
-
-        document.getElementById("prev").addEventListener("click", () => {
-          currentIndex = (currentIndex - 1 + images.length) % images.length;
-          updateImage();
-        });
-
-        thumbnails.forEach((thumb, index) => {
-          thumb.addEventListener("click", () => {
-            currentIndex = index;
-            updateImage();
-          });
-        });
-
-        function updateImage() {
-          mainImage.src = images[currentIndex];
-          thumbnails.forEach((thumb) =>
-            thumb.classList.remove("border-red-500")
-          );
-          thumbnails[currentIndex].classList.add("border-red-500");
-        }
-
-        const container = document.getElementById("similarContainer");
-        const prevBtn = document.getElementById("prevBtn");
-        const nextBtn = document.getElementById("nextBtn");
-
-        function updateButtons() {
-          prevBtn.style.display = container.scrollLeft > 0 ? "block" : "none";
-          nextBtn.style.display =
-            container.scrollLeft + container.clientWidth < container.scrollWidth
-              ? "block"
-              : "none";
-        }
-
-        prevBtn.addEventListener("click", () => {
-          container.scrollBy({
-            left: -container.clientWidth / 1.5,
-            behavior: "smooth",
-          });
-        });
-
-        nextBtn.addEventListener("click", () => {
-          container.scrollBy({
-            left: container.clientWidth / 1.5,
-            behavior: "smooth",
-          });
-        });
-
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        container.addEventListener("mousedown", (e) => {
-          isDown = true;
-          startX = e.pageX - container.offsetLeft;
-          scrollLeft = container.scrollLeft;
-          container.style.scrollBehavior = "auto";
-        });
-
-        container.addEventListener("mouseleave", () => {
-          isDown = false;
-        });
-
-        container.addEventListener("mouseup", () => {
-          isDown = false;
-          container.style.scrollBehavior = "smooth";
-        });
-
-        container.addEventListener("mousemove", (e) => {
-          if (!isDown) return;
-          e.preventDefault();
-          const x = e.pageX - container.offsetLeft;
-          const walk = (x - startX) * 2;
-          container.scrollLeft = scrollLeft - walk;
-        });
-
-        let autoScrollDirection = 1;
-        let autoScroll;
-
-        function startAutoScroll() {
-          autoScroll = setInterval(() => {
-            if (
-              container.scrollLeft + container.clientWidth >=
-              container.scrollWidth
-            ) {
-              autoScrollDirection = -1;
-            } else if (container.scrollLeft <= 0) {
-              autoScrollDirection = 1;
-            }
-            container.scrollBy({
-              left: autoScrollDirection * 2,
-              behavior: "smooth",
-            });
-          }, 50);
-        }
-
-        function stopAutoScroll() {
-          clearInterval(autoScroll);
-        }
-
-        container.addEventListener("mouseenter", stopAutoScroll);
-        container.addEventListener("mouseleave", startAutoScroll);
-        container.addEventListener("scroll", updateButtons);
-
-        startAutoScroll();
-        updateButtons();
-      </script>
     </div>
+
+    <div id="imageModal" class="modal flex">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <button class="modal-button left-btn" onclick="changeImage(-1)">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <img id="modalImage" class="modal-content" />
+      <button class="modal-button right-btn" onclick="changeImage(1)">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <script>
+      const images = [
+        "../images/1.jpg",
+        "../images/2.jpeg",
+        "../images/miusiam.jpg",
+      ];
+
+      let currentImageIndex = 0;
+      const modal = document.getElementById("imageModal");
+      const modalImage = document.getElementById("modalImage");
+
+      function openModal(index) {
+        currentImageIndex = index;
+        modal.style.display = "flex";
+        modalImage.src = images[currentImageIndex];
+      }
+
+      function closeModal() {
+        modal.style.display = "none";
+      }
+
+      function changeImage(direction) {
+        currentImageIndex += direction;
+        if (currentImageIndex < 0) currentImageIndex = images.length - 1;
+        if (currentImageIndex >= images.length) currentImageIndex = 0;
+        modalImage.src = images[currentImageIndex];
+      }
+
+      const container = document.getElementById("similarContainer");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+
+      function updateButtons() {
+        prevBtn.style.display = container.scrollLeft > 0 ? "block" : "none";
+        nextBtn.style.display =
+          container.scrollLeft + container.clientWidth < container.scrollWidth
+            ? "block"
+            : "none";
+      }
+
+      prevBtn.addEventListener("click", () => {
+        container.scrollBy({
+          left: -container.clientWidth / 1.5,
+          behavior: "smooth",
+        });
+      });
+
+      nextBtn.addEventListener("click", () => {
+        container.scrollBy({
+          left: container.clientWidth / 1.5,
+          behavior: "smooth",
+        });
+      });
+    </script>
   </body>
 </html>
