@@ -1359,6 +1359,30 @@ video {
   padding-right: 650px;
 }
 
+.pr-40 {
+  padding-right: 10rem;
+}
+
+.pr-48 {
+  padding-right: 12rem;
+}
+
+.pr-44 {
+  padding-right: 11rem;
+}
+
+.pr-56 {
+  padding-right: 14rem;
+}
+
+.pr-52 {
+  padding-right: 13rem;
+}
+
+.text-left {
+  text-align: left;
+}
+
 .text-center {
   text-align: center;
 }
@@ -1687,6 +1711,10 @@ video {
     padding-left: 3rem;
   }
 
+  .sm\:pr-10 {
+    padding-right: 2.5rem;
+  }
+
   .sm\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -1743,6 +1771,18 @@ video {
 }
 
 @media (min-width: 1024px) {
+  .lg\:absolute {
+    position: absolute;
+  }
+
+  .lg\:relative {
+    position: relative;
+  }
+
+  .lg\:top-0 {
+    top: 0px;
+  }
+
   .lg\:mx-20 {
     margin-left: 5rem;
     margin-right: 5rem;
@@ -1813,6 +1853,14 @@ video {
 }
 
 @media (min-width: 1280px) {
+  .xl\:absolute {
+    position: absolute;
+  }
+
+  .xl\:top-0 {
+    top: 0px;
+  }
+
   .xl\:w-8 {
     width: 2rem;
   }
